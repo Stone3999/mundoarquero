@@ -1,7 +1,11 @@
 const express = require('express');
-const fetch = require('node-fetch'); // Asegúrate de instalar esto con `npm install node-fetch`
+const fetch = require('node-fetch');
+const cors = require('cors');  // <-- importar cors
 
 const app = express();
+
+app.use(cors());  // <-- habilitar CORS para todas las solicitudes (origenes)
+
 app.use(express.json());
 
 app.post('/Validacion', async (req, res) => {
