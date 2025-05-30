@@ -30,7 +30,7 @@ app.post('/Sucursales', async (req, res) => {
         const response = await fetch('http://mundoarquero.ddns.net:5014/Sucursales', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(req.body),  // si no necesitas body puedes cambiar a undefined o {}
+            body: JSON.stringify(req.body),
         });
 
         const data = await response.json();
@@ -41,6 +41,24 @@ app.post('/Sucursales', async (req, res) => {
     }
 });
 
+// ✅ Proxy para Existencias
+app.post('/Existencias', async (req, res) => {
+    try {
+        const response = await fetch('http://mundoarquero.ddns.net:5014/Existencias', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(req.body), // Aquí pasamos el cuerpo directamente desde el cliente
+        });
+
+        const data = await response.json();
+        res.status(response.status).json(data);
+    } catch (error) {
+        console.error('Error al hacer la solicitud /Existencias:', error);
+        res.status(500).json({ error: 'Error interno del proxy en Existencias' });
+    }
+});
+
+// Configuración del puerto
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor proxy corriendo en el puerto ${PORT}`);
