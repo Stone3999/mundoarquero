@@ -10,7 +10,7 @@ app.use(express.json());
 // Proxy para Validacion
 app.post('/Validacion', async (req, res) => {
     try {
-        const response = await fetch('http://mundoarquero.ddns.net:5014/Validacion', {
+        const response = await fetch('https://mundoarquero.ddns.net:5011/Validacion', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(req.body),
@@ -27,7 +27,7 @@ app.post('/Validacion', async (req, res) => {
 // Proxy para Sucursales
 app.post('/Sucursales', async (req, res) => {
     try {
-        const response = await fetch('http://mundoarquero.ddns.net:5014/Sucursales', {
+        const response = await fetch('https://mundoarquero.ddns.net:5011/Sucursales', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(req.body),
@@ -44,7 +44,7 @@ app.post('/Sucursales', async (req, res) => {
 // ✅ Proxy para Existencias
 app.post('/Existencias', async (req, res) => {
     try {
-        const response = await fetch('http://mundoarquero.ddns.net:5014/Existencias', {
+        const response = await fetch('https://mundoarquero.ddns.net:5011/Existencias', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(req.body), // Aquí pasamos el cuerpo directamente desde el cliente
